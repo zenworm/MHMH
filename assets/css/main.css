@@ -644,7 +644,6 @@ body.is-busy, body.is-busy * {
   -webkit-animation-timing-function: steps(3, end); }
 
 #hello {
-  min-height: 1200px;
   background: url(../images/backgrounds/smokin-guy.png) 0 top no-repeat, url(../images/backgrounds/bg-home2.jpg) no-repeat;
   background-size: auto 150%, cover;
   background-attachment: fixed; }
@@ -652,7 +651,6 @@ body.is-busy, body.is-busy * {
 #new-album {
   position: relative;
   width: 100%;
-  min-height: 800px;
   background: black;
   padding: 4em;
   z-index: 2;
