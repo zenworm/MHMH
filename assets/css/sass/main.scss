@@ -191,10 +191,10 @@ body.is-busy, body.is-busy * { cursor:progress !important; }
 	font-family:"Minion Pro","Garamond","Georgia",Times;
 	color:white;
 	font-size:2em;
-	text-align:center;
 
 	@media screen and ( max-width: 600px ) {
 		padding:3em 1em;
+		text-align:center;
 	}
 
 	.inner {

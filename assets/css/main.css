@@ -672,11 +672,11 @@ body.is-busy, body.is-busy * {
   box-shadow: 0 0 2em black;
   font-family: "Minion Pro","Garamond","Georgia",Times;
   color: white;
-  font-size: 2em;
-  text-align: center; }
+  font-size: 2em; }
   @media screen and (max-width: 600px) {
     #new-album {
-      padding: 3em 1em; } }
+      padding: 3em 1em;
+      text-align: center; } }
   #new-album .inner {
     max-width: 30em;
     margin: 0 auto; }
