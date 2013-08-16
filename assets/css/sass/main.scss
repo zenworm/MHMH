@@ -34,9 +34,17 @@ $color-highlight:tint(#ffe400, 90%);
 // 48 / 16 =     3em
 // 72 / 16 =     4.5em
 
-h1, h2 { line-height:1.3; }
-h3, h4 { line-height:1.4; }
-a { color:$color-link; text-decoration:none; border-bottom:1px solid $color-link; }
+h1, h2 {
+  line-height:1.3;
+}
+h3, h4 {
+  line-height:1.4;
+}
+a {
+  color:$color-link;
+  text-decoration:none;
+  border-bottom:1px solid $color-link;
+}
 
 $font-body:proxima-nova-alt, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -48,41 +56,80 @@ $font-body:proxima-nova-alt, "Helvetica Neue", Helvetica, Arial, sans-serif;
 // =================================
 
 // Base button
-.button { position:relative; display:block; border-radius:4px; padding:0.5em 1.25em; border:none; background:#ddd; color:rgba(0,0,0,.4); font-weight:bold; text-decoration:none; cursor: pointer; @include transition(.1s ease-out all);
+.button {
+  position:relative;
+  display:block;
+  border-radius:4px;
+  padding:0.5em 1.25em;
+  border:none;
+  background:#ddd;
+  color:rgba(0,0,0,.4);
+  font-weight:bold;
+  text-decoration:none;
+  cursor: pointer;
+  @include transition(.1s ease-out all);
 
 	// Click state
-	&:active { @include transform(translate3d(0, 1px, 0)); }
+	&:active {
+    @include transform(translate3d(0, 1px, 0));
+  }
 
 	// Hover state
-	&:hover { background:shade(#ddd, 5%); }
+	&:hover {
+    background:shade(#ddd, 5%);
+  }
 
 	// Active class state
-	&.active { background:silver; color:#666;
-		&:hover { background:darken(silver,5%); }
+	&.active {
+    background:silver; color:#666;
+
+    &:hover {
+      background:darken(silver,5%);
+    }
 	}
 
 	// Small sized button
-	&.button-small { @extend .button; padding:0.5em 1em; font-size:0.875em; }
+	&.button-small {
+    @extend .button;
+    padding:0.5em 1em;
+    font-size:0.875em;
+  }
 
 	// Primary button
-	&.button-primary { @extend .button; background:$color-primary; color:white;
-		&:hover { background:shade($color-primary,5%); }
+	&.button-primary {
+    @extend .button;
+    background:$color-primary;
+    color:white;
+
+    &:hover {
+      background:shade($color-primary,5%);
+    }
 	}
 
 	// Cancel button
-	&.button-cancel { @extend .button; background:#ccc;
-		&:hover { background:shade(#ccc, 5%); }
+	&.button-cancel {
+    @extend .button; background:#ccc;
+
+    &:hover {
+      background:shade(#ccc, 5%);
+    }
 	}
 
 	// Disabled button
-	&.button-disabled { @extend .button-cancel; color:rgba(black,.25); cursor:default;
-		&:active { @include transform(translate3d(0, 0, 0)); }
+	&.button-disabled {
+    @extend .button-cancel;
+    color:rgba(black,.25);
+    cursor:default;
+
+    &:active {
+      @include transform(translate3d(0, 0, 0));
+    }
 	}
 }
 
 // =================================
 //
-//   Animations
+//   CSS Animations
 //
 // =================================
 
@@ -93,7 +140,10 @@ $font-body:proxima-nova-alt, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 // Allow for display:none on animations/transitions
-.is-transitioning { display: block !important; visibility: visible !important; }
+.is-transitioning {
+  display: block !important;
+  visibility: visible !important;
+}
 
 
 // =================================
@@ -102,14 +152,18 @@ $font-body:proxima-nova-alt, "Helvetica Neue", Helvetica, Arial, sans-serif;
 //
 // =================================
 
-html { -webkit-font-smoothing:antialiased; font-size:100%; height:100%; }
-body { 
-	margin:0; 
-	padding:0; 
-	color:$color-text; 
-	line-height:1.5; 
-	font-family:$font-body; 
-	height:100%; 
+html {
+  font-size:100%;
+  height:100%;
+  -webkit-font-smoothing:antialiased;
+}
+
+body {
+	margin:0;
+	padding:0;
+	color:$color-text;
+	line-height:1.5;
+	font-family:$font-body;
 
 	// Smaller screens
 	@media screen and ( max-width: 1280px ) {
@@ -133,104 +187,43 @@ body {
 }
 
 // Loading cursor hook
-body.is-busy, body.is-busy * { cursor:progress !important; }
+body.is-busy, body.is-busy * {
+  cursor:progress !important;
+}
 
 // Border box is the way to go, yo.
-* { box-sizing:border-box; }
+* {
+  box-sizing:border-box;
+}
 
 // Style text selection
-::-moz-selection { background:$color-primary; color:#fff; }
-::selection { background:$color-primary; color:#fff; }
+::-moz-selection {
+  background:$color-primary;
+  color:#fff;
+}
+
+::selection {
+  background:$color-primary; color:#fff;
+}
 
 // Style placeholder
-::-webkit-input-placeholder { color:#999; font-weight:normal; -webkit-font-smoothing:antialiased; }
-::-moz-placeholder { color:#999; font-weight:normal; }
-:-moz-placeholder { color:#999; font-weight:normal; }
-:ms-input-placeholder { color:#999; font-weight:normal; }
-
-
-// =================================
-//
-//  LOGO
-//
-// =================================
-
-// Spin the logo
-@include keyframes(logo-spin) {
-  from { @include transform( scale( 0.75 ) rotate( 0 ) ); }
-    to { @include transform( scale( 0.75 ) rotate( -359deg ) ); }
+::-webkit-input-placeholder {
+  color:#999;
+  font-weight:normal;
+  -webkit-font-smoothing:antialiased;
 }
 
-// Animate logo background for frame animation
-@include keyframes(logo-letters) {
-  from { background-position-x:0; }
-    to { background-position-x:-1500px; }
+::-moz-placeholder {
+  color:#999;
+  font-weight:normal;
 }
 
-#logo { position:fixed; top:-1em; right:50%; margin-right:-250px; width:500px; height:500px; text-indent:-9999px; @include animation( logo-spin 20s linear infinite ); }
+:-moz-placeholder {
+  color:#999;
+  font-weight:normal;
+}
 
-#logo span { display:block; position:absolute; top:0; right:0; bottom:0; left:0; background:url(../images/logo/logo-frames.png) no-repeat; @include animation( logo-letters .75s linear infinite ); -webkit-animation-timing-function: steps(3, end); }
-
-#hello { background:url(../images/backgrounds/smokin-guy.png) 0 top no-repeat, url(../images/backgrounds/bg-home2.jpg) no-repeat; background-size:auto 100%, cover; background-attachment:fixed; height:500px; }
-
-.album-cover { border-radius:4px; @include box-shadow( inset 0 2px 1px white ); }
-
-
-// =================================
-//
-//  New Album
-//
-// =================================
-
-#new-album {
-	position:relative;
-	background:black;
-	padding:4em;
-	z-index:2;
-	@include box-shadow( 0 0 2em black );
-	font-family:"Minion Pro","Garamond","Georgia",Times;
-	color:white;
-	font-size:2em;
-
-	@media screen and ( max-width: 600px ) {
-		padding:3em 1em;
-		text-align:center;
-	}
-
-	.inner {
-		max-width:30em;
-		margin:0 auto;
-	}
-
-	img {
-		display:block;
-		width:8em;
-		float:left;
-
-		@media screen and ( max-width: 600px ) {
-			float:none;
-			margin:0 auto;
-		}
-	}
-
-	.text {
-		padding-left:10em;
-
-		@media screen and ( max-width: 600px ) {
-			padding:0;
-		}
-	}
-
-	p {
-		margin-bottom:2em;
-	}
-
-	.button {
-		display:inline-block;
-		font-family: 'Sue Ellen Francisco', sans-serif;
-		font-weight:900;
-		text-transform:uppercase;
-		background:#d22027;
-		color:white;
-	}
+:ms-input-placeholder {
+  color:#999;
+  font-weight:normal;
 }
