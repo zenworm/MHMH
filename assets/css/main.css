@@ -346,7 +346,7 @@ a {
   text-decoration: none;
   border-bottom: 1px solid black; }
 
-.button, .button.button-small, .button.button-primary, .button.button-cancel, .button.button-disabled {
+.button, .button-primary {
   position: relative;
   display: block;
   border-radius: 4px;
@@ -357,43 +357,32 @@ a {
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
+  font-family: "Sue Ellen Francisco",sans-serif;
+  text-transform: uppercase;
   -webkit-transition: 0.1s ease-out all;
   -moz-transition: 0.1s ease-out all;
   transition: 0.1s ease-out all; }
-  .button:active {
+  .button:active, .button-primary:active {
     -webkit-transform: translate3d(0, 1px, 0);
     -moz-transform: translate3d(0, 1px, 0);
     -ms-transform: translate3d(0, 1px, 0);
     -o-transform: translate3d(0, 1px, 0);
     transform: translate3d(0, 1px, 0); }
-  .button:hover {
+  .button:hover, .button-primary:hover {
     background: #d1d1d1; }
-  .button.active {
+  .button.active, .active.button-primary {
     background: silver;
     color: #666; }
-    .button.active:hover {
+    .button.active:hover, .active.button-primary:hover {
       background: #b3b3b3; }
-  .button-small.button {
-    padding: 0.5em 1em;
-    font-size: 0.875em; }
-  .button-primary.button {
-    background: black;
-    color: white; }
-    .button-primary.button:hover {
-      background: black; }
-  .button-cancel.button, .button.button-disabled {
-    background: #ccc; }
-    .button-cancel.button:hover, .button.button-disabled:hover {
-      background: #c1c1c1; }
-  .button-disabled.button {
-    color: rgba(0, 0, 0, 0.25);
-    cursor: default; }
-    .button-disabled.button:active {
-      -webkit-transform: translate3d(0, 0, 0);
-      -moz-transform: translate3d(0, 0, 0);
-      -ms-transform: translate3d(0, 0, 0);
-      -o-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0); }
+
+.button-primary {
+  display: inline-block;
+  margin: 0 auto;
+  background: red;
+  color: white; }
+  .button-primary:hover {
+    background: black; }
 
 @-moz-keyframes highlight-quick {
   from {
@@ -443,15 +432,21 @@ a {
 
 html {
   font-size: 100%;
-  height: 100%;
-  -webkit-font-smoothing: antialiased; }
+  height: 100%; }
 
 body {
   margin: 0;
-  padding: 0;
-  color: #444444;
+  padding: 2em;
+  color: white;
+  background: #0b0b0b;
   line-height: 1.5;
-  font-family: proxima-nova-alt, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "Courier New", sans-serif;
+  *zoom: 1; }
+  body:before, body:after {
+    content: " ";
+    display: table; }
+  body:after {
+    clear: both; }
   @media screen and (max-width: 1280px) {
     body {
       font-size: 85%; } }
@@ -495,3 +490,171 @@ body.is-busy, body.is-busy * {
 :ms-input-placeholder {
   color: #999;
   font-weight: normal; }
+
+.a-beautiful-container {
+  padding: 2em;
+  min-height: 26em;
+  display: block;
+  float: left;
+  margin-right: 2.1645%;
+  margin-bottom: 2.1645%;
+  width: 31.89033%; }
+  .a-beautiful-container:last-child {
+    margin-right: 0; }
+  .a-beautiful-container:nth-child(3n) {
+    margin-right: 0; }
+
+.page-wrapper {
+  position: fixed;
+  top: 8em;
+  right: 2em;
+  bottom: 0;
+  left: 2em;
+  overflow: scroll;
+  -webkit-transition: 0.2s ease-in-out all;
+  -moz-transition: 0.2s ease-in-out all;
+  transition: 0.2s ease-in-out all; }
+
+.header-main {
+  position: relative;
+  background: #333333 url(../images/backgrounds/bg-album-cover.jpg);
+  background-size: cover; }
+
+.logo-main {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 2em;
+  height: 85%;
+  margin: 0;
+  background: url(../images/logo/logo-mhmh.png) right bottom no-repeat;
+  background-size: contain;
+  text-indent: -9999px; }
+
+.download-the-album {
+  border: 4px solid #333; }
+
+.song {
+  position: relative;
+  border: 4px solid #333;
+  overflow: hidden; }
+  .song img {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+  .song p {
+    position: absolute;
+    right: 2em;
+    bottom: 7em;
+    margin: 0;
+    font-family: "Sue Ellen Francisco", serif;
+    text-transform: uppercase; }
+    .song p span {
+      font-size: 2em; }
+
+.song .play,
+.song .lyrics {
+  position: absolute;
+  bottom: 2em;
+  right: 2em;
+  width: 4em;
+  height: 4em;
+  border: 4px solid white;
+  border-radius: 100em;
+  text-align: center;
+  line-height: 4em;
+  cursor: pointer; }
+.song .play {
+  right: 7em; }
+
+.insanity-jam {
+  background: url(../images/backgrounds/insanity-jam.jpg) no-repeat;
+  background-size: cover; }
+
+.rope-a-dope {
+  background: url(../images/backgrounds/bg-rope-a-dope.jpg) no-repeat;
+  background-size: cover; }
+
+.shittiest-folk-bands {
+  background: url(../images/backgrounds/bg-shittiest-folk-bands.jpg) no-repeat;
+  background-size: cover; }
+
+.audio-player-container {
+  position: fixed;
+  top: 0;
+  right: 2em;
+  left: 2em;
+  padding-top: 2em;
+  height: 8em;
+  color: white;
+  background: #0b0b0b;
+  font-family: "Courier New";
+  z-index: 1000; }
+  .audio-player-container nav {
+    float: right;
+    margin-right: 2em;
+    line-height: 4em; }
+    .audio-player-container nav a {
+      display: inline-block;
+      line-height: 1.5;
+      vertical-align: middle; }
+  .audio-player-container ul,
+  .audio-player-container li {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+  .audio-player-container a {
+    color: white; }
+  .audio-player-container .jp-controls li {
+    float: left; }
+  .audio-player-container .jp-play,
+  .audio-player-container .jp-pause,
+  .audio-player-container .jp-previous,
+  .audio-player-container .jp-next {
+    display: inline-block;
+    width: 4em;
+    height: 4em;
+    margin-left: 2em;
+    border: 4px solid white;
+    border-radius: 100em;
+    text-align: center;
+    line-height: 4em;
+    cursor: pointer; }
+  .audio-player-container .jp-playlist li {
+    display: none;
+    float: left; }
+    .audio-player-container .jp-playlist li.jp-playlist-current {
+      display: block;
+      margin-left: 2em;
+      height: 4em;
+      line-height: 4em; }
+      .audio-player-container .jp-playlist li.jp-playlist-current a {
+        font-size: 1.5em; }
+
+.duration {
+  float: left;
+  margin-left: 1em;
+  line-height: 4em; }
+
+.panel {
+  display: none;
+  position: fixed;
+  top: 8em;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 4em;
+  background: red;
+  overflow: scroll;
+  z-index: 1001; }
+  .panel .panel-close {
+    cursor: pointer; }
+
+.lyrics.panel {
+  background: darkblue; }
+  .lyrics.panel p {
+    font-size: 3vw;
+    font-family: "Neuton",serif; }

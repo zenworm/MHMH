@@ -12,9 +12,9 @@
 
 $color-primary:black;
 $color-secondary:gray;
-$color-text:#444;
+$color-text:white;
 $color-link:shade($color-primary, 35%);
-$color-bg:#e6e6e6;
+$color-bg:#0b0b0b;
 $color-highlight:tint(#ffe400, 90%);
 
 
@@ -46,7 +46,7 @@ a {
   border-bottom:1px solid $color-link;
 }
 
-$font-body:proxima-nova-alt, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-body:"Courier New", sans-serif;
 
 
 // =================================
@@ -67,6 +67,8 @@ $font-body:proxima-nova-alt, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight:bold;
   text-decoration:none;
   cursor: pointer;
+  font-family:"Sue Ellen Francisco",sans-serif;
+  text-transform:uppercase;
   @include transition(.1s ease-out all);
 
 	// Click state
@@ -87,44 +89,19 @@ $font-body:proxima-nova-alt, "Helvetica Neue", Helvetica, Arial, sans-serif;
       background:darken(silver,5%);
     }
 	}
+}
 
-	// Small sized button
-	&.button-small {
-    @extend .button;
-    padding:0.5em 1em;
-    font-size:0.875em;
+// Primary button
+.button-primary {
+  @extend .button;
+  display:inline-block;
+  margin:0 auto;
+  background:red;
+  color:white;
+
+  &:hover {
+    background:shade($color-primary,5%);
   }
-
-	// Primary button
-	&.button-primary {
-    @extend .button;
-    background:$color-primary;
-    color:white;
-
-    &:hover {
-      background:shade($color-primary,5%);
-    }
-	}
-
-	// Cancel button
-	&.button-cancel {
-    @extend .button; background:#ccc;
-
-    &:hover {
-      background:shade(#ccc, 5%);
-    }
-	}
-
-	// Disabled button
-	&.button-disabled {
-    @extend .button-cancel;
-    color:rgba(black,.25);
-    cursor:default;
-
-    &:active {
-      @include transform(translate3d(0, 0, 0));
-    }
-	}
 }
 
 // =================================
@@ -155,15 +132,17 @@ $font-body:proxima-nova-alt, "Helvetica Neue", Helvetica, Arial, sans-serif;
 html {
   font-size:100%;
   height:100%;
-  -webkit-font-smoothing:antialiased;
+  // -webkit-font-smoothing:antialiased;
 }
 
 body {
 	margin:0;
-	padding:0;
+	padding:2em;
 	color:$color-text;
+  background:$color-bg;
 	line-height:1.5;
 	font-family:$font-body;
+  @include clearfix;
 
 	// Smaller screens
 	@media screen and ( max-width: 1280px ) {
@@ -226,4 +205,251 @@ body.is-busy, body.is-busy * {
 :ms-input-placeholder {
   color:#999;
   font-weight:normal;
+}
+
+// =================================
+//
+//   Wrappers
+//
+// =================================
+.a-beautiful-container {
+  padding:2em;
+  min-height:26em;
+  @include span-columns(4);
+  @include omega(3n);
+}
+
+.page-wrapper {
+  position:fixed;
+  top:8em; right:2em; bottom:0; left:2em;
+  overflow:scroll;
+  @include transition(.2s ease-in-out all);
+
+  // .panel-open & {
+  //   @include transform(scale(1.2));
+  //   -webkit-filter: blur(2px);
+  // }
+}
+
+// =================================
+//
+//   Header
+//
+// =================================
+
+.header-main {
+  position:relative;
+  background:#333 url(../images/backgrounds/bg-album-cover.jpg);
+  background-size:cover;
+}
+
+.logo-main {
+  position:absolute;
+  right:0; bottom:0; left:2em;
+  height:85%;
+  margin:0;
+  background:url(../images/logo/logo-mhmh.png) right bottom no-repeat;
+  background-size:contain;
+  text-indent:-9999px;
+}
+
+// =================================
+//
+//   Download the album
+//
+// =================================
+
+.download-the-album {
+  border:4px solid #333;
+}
+
+// =================================
+//
+//   Songs
+//
+// =================================
+
+$song-title-font:"Neuton",serif;
+$song-title-font:"Sue Ellen Francisco",serif;
+
+.song {
+  position:relative;
+  border:4px solid #333;
+  overflow:hidden;
+
+  img {
+    display:block;
+    position:absolute;
+    top:0; right:0; bottom:0; left:0;
+  }
+
+  p {
+    position:absolute;
+    right:2em; bottom:7em;
+    margin:0;
+    font-family:$song-title-font;
+    text-transform:uppercase;
+
+    span {
+      font-size:2em;
+    }
+  }
+}
+
+.song {
+  .play,
+  .lyrics {
+    position:absolute;
+    bottom:2em; right:2em;
+    width:4em; height:4em;
+    border:4px solid white;
+    border-radius:100em;
+    text-align:center;
+    line-height:4em;
+    cursor:pointer;
+  }
+
+  .play {
+    right:7em;
+  }
+}
+
+.insanity-jam {
+  background:url(../images/backgrounds/insanity-jam.jpg) no-repeat;
+  background-size:cover;
+}
+
+.rope-a-dope {
+  background:url(../images/backgrounds/bg-rope-a-dope.jpg) no-repeat;
+  background-size:cover;
+}
+
+.shittiest-folk-bands {
+  background:url(../images/backgrounds/bg-shittiest-folk-bands.jpg) no-repeat;
+  background-size:cover;
+}
+
+
+// =================================
+//
+//   Audio player
+//
+// =================================
+
+.audio-player-container {
+  position:fixed;
+  top:0; right:2em; left:2em;
+  padding-top:2em;
+  height:8em;
+  color:white;
+  background:$color-bg;
+  font-family:"Courier New";
+  z-index:1000;
+
+  nav {
+    float:right;
+    margin-right:2em;
+    line-height:4em;
+
+    a {
+      display:inline-block;
+      line-height:1.5;
+      vertical-align:middle;
+    }
+  }
+
+  ul,
+  li {
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  a {
+    color:white;
+  }
+
+  // Player buttons
+  .jp-controls li {
+    float:left;
+  }
+  .jp-play,
+  .jp-pause,
+  .jp-previous,
+  .jp-next {
+    display:inline-block;
+    width:4em;
+    height:4em;
+    margin-left:2em;
+    border:4px solid white;
+    border-radius:100em;
+    text-align:center;
+    line-height:4em;
+    cursor:pointer;
+  }
+
+  // Hide songs that aren't playing
+  .jp-playlist li {
+    display:none;
+    float:left;
+
+    &.jp-playlist-current {
+      display:block;
+      margin-left:2em;
+      height:4em;
+      line-height:4em;
+
+      a {
+        font-size:1.5em;
+      }
+    }
+  }
+}
+
+.duration {
+  float:left;
+  margin-left:1em;
+  line-height:4em;
+
+  span {
+  }
+}
+
+// =================================
+//
+//   Panels
+//
+// =================================
+
+.panel {
+  display:none;
+  position:fixed;
+  top:8em; right:0; bottom:0; left:0;
+  padding:4em;
+  background:red;
+  overflow:scroll;
+  z-index:1001;
+
+  .panel-close {
+    cursor:pointer;
+  }
+}
+
+// =================================
+//
+//   Lyrics
+//
+// =================================
+
+.lyrics.panel {
+  background:darkblue;
+  p {
+    font-size:3vw;
+    font-family:"Neuton",serif;
+  }
+}
+
+.lyrics-text {
+  // -webkit-columns:2;
+  // -webkit-column-gap:2em;
 }
