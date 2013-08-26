@@ -283,17 +283,23 @@ $song-title-font:"Sue Ellen Francisco",serif;
     top:0; right:0; bottom:0; left:0;
   }
 
-  p {
+  header {
     position:absolute;
     right:2em; bottom:7em;
     margin:0;
     font-family:$song-title-font;
     text-transform:uppercase;
 
-    span {
+    h1 {
+      margin:0;
       font-size:2em;
     }
   }
+}
+
+// Hide song lyrics
+.lyrics-text {
+  display:none;
 }
 
 .song {
