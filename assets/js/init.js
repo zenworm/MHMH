@@ -7,7 +7,6 @@ $(document).ready(function() {
   $(".song .lyrics").click(function() {
     var songName = $(this).parents(".song").find("header h1").text();
     var lyricsText = $(this).parents(".song").find(".lyrics-text").html();
-    console.log(songName);
     $(".panel.lyrics .lyrics-text-container").html(lyricsText);
     $(".panel.lyrics header h1").text(songName);
     $(".panel.lyrics").fadeIn(200);
