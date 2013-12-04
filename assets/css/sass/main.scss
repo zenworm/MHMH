@@ -1,6 +1,7 @@
 @import "bourbon/bourbon";
 @import "_neatoverrides";
 @import "neat/neat";
+@import "icons";
 @import "mixins";
 @import "normalize";
 
@@ -47,7 +48,6 @@ a {
 }
 
 $font-body:"Courier New", sans-serif;
-
 
 // =================================
 //
@@ -96,6 +96,7 @@ $font-body:"Courier New", sans-serif;
   @extend .button;
   display:inline-block;
   margin:0 auto;
+  border:4px double rgba(black,0.375);
   background:red;
   color:white;
 
@@ -132,7 +133,7 @@ $font-body:"Courier New", sans-serif;
 html {
   font-size:100%;
   height:100%;
-  // -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:antialiased;
 }
 
 body {
@@ -143,6 +144,7 @@ body {
 	line-height:1.5;
 	font-family:$font-body;
   @include clearfix;
+  font-size:90%;
 
 	// Smaller screens
 	@media screen and ( max-width: 1280px ) {
@@ -215,20 +217,17 @@ body.is-busy, body.is-busy * {
 .a-beautiful-container {
   padding:2em;
   min-height:26em;
-  @include span-columns(4);
-  @include omega(3n);
+  @include span-columns(3);
+  @include omega(4n);
 }
 
 .page-wrapper {
   position:fixed;
-  top:8em; right:2em; bottom:0; left:2em;
+  top:0; right:0; bottom:6em; left:0;
+  padding:0 2em;
+  padding-top:2em;
   overflow:scroll;
   @include transition(.2s ease-in-out all);
-
-  // .panel-open & {
-  //   @include transform(scale(1.2));
-  //   -webkit-filter: blur(2px);
-  // }
 }
 
 // =================================
@@ -260,7 +259,48 @@ body.is-busy, body.is-busy * {
 // =================================
 
 .download-the-album {
-  border:4px solid #333;
+  background:#333;
+  color:red;
+  overflow:hidden;
+  @include display(flex);
+  @include align-items(center);
+  @include flex-direction(column);
+
+  p {
+    margin:auto;
+    color:white;
+    text-align:center;
+  }
+
+  .button-primary {
+    margin:auto;
+    display:block;
+    font-size:1.5em;
+    text-align:center;
+  }
+
+  .image {
+    position:relative;
+    max-width:10em;
+    border-radius:5px;
+    border:1px solid #666;
+    display:none;
+
+    &:after {
+      content:"";
+      display:block;
+      position:absolute;
+      top:0; right:0; bottom:0; left:0;
+      border-radius:5px;
+      box-shadow:inset 0 -1px 0 0 rgba(white, 0.35);
+    }
+  }
+
+  img {
+    display:block;
+    max-width:100%;
+    border-radius:5px;
+  }
 }
 
 // =================================
@@ -274,7 +314,7 @@ $song-title-font:"Sue Ellen Francisco",serif;
 
 .song {
   position:relative;
-  border:4px solid #333;
+  // border:4px solid #333;
   overflow:hidden;
 
   img {
@@ -285,7 +325,7 @@ $song-title-font:"Sue Ellen Francisco",serif;
 
   header {
     position:absolute;
-    right:2em; bottom:7em;
+    left:2em; bottom:7em;
     margin:0;
     font-family:$song-title-font;
     text-transform:uppercase;
@@ -306,7 +346,7 @@ $song-title-font:"Sue Ellen Francisco",serif;
   .play,
   .lyrics {
     position:absolute;
-    bottom:2em; right:2em;
+    bottom:2em; left:2em;
     width:4em; height:4em;
     border:4px solid white;
     border-radius:100em;
@@ -316,22 +356,86 @@ $song-title-font:"Sue Ellen Francisco",serif;
   }
 
   .play {
-    right:7em;
+    left:7em;
+    @include icon('before', true, play) {
+      position:absolute;
+      top:50%; left:50%;
+      width:1em; height:1em;
+      margin-top:-0.5em;
+      margin-left:-0.5em;
+      font-size:1.5rem;
+    }
+  }
+
+  .lyrics {
+    @include icon('before', true, lyrics2) {
+      position:absolute;
+      top:50%; left:50%;
+      width:1em; height:1em;
+      margin-top:-0.5em;
+      margin-left:-0.5em;
+      font-size:1.5rem;
+    }
   }
 }
 
-.insanity-jam {
-  background:url(../images/backgrounds/insanity-jam.jpg) no-repeat;
-  background-size:cover;
+.song.insanity-jam {
+  background:url(../images/backgrounds/bg-insanity-jam2.jpg) 18% 15% no-repeat;
+  background-size:250%;
 }
 
-.rope-a-dope {
-  background:url(../images/backgrounds/bg-rope-a-dope.jpg) no-repeat;
-  background-size:cover;
+.song.rope-a-dope {
+  background:url(../images/backgrounds/bg-rope-a-dope2.jpg) 70% 55% no-repeat;
+  background-size:270%;
 }
 
-.shittiest-folk-bands {
+.song.shittiest-folk-bands {
   background:url(../images/backgrounds/bg-shittiest-folk-bands.jpg) no-repeat;
+  background-size:cover;
+}
+
+.song.city-of-god {
+  background:url(../images/backgrounds/bg-city-of-god.jpg) no-repeat;
+  background-size:cover;
+}
+
+.song.devil-queen {
+  background:url(../images/backgrounds/bg-devil-queen.jpg) no-repeat;
+  background-size:cover;
+}
+
+.song.long-way-around {
+  background:url(../images/backgrounds/bg-long-way-around2.jpg) center center no-repeat;
+  background-size:160%;
+}
+
+.song.yellow-bushy-county {
+  background:url(../images/backgrounds/bg-yellow-bushy-county.jpg) no-repeat;
+  background-size:cover;
+}
+
+.song.changemonger {
+  background:url(../images/backgrounds/bg-changemonger.jpg) no-repeat;
+  background-size:cover;
+}
+
+.song.jankin-brigade {
+  background:url(../images/backgrounds/bg-jankin-brigade.jpg) 40% 20% no-repeat;
+  background-size:300%;
+}
+
+.song.music-sound {
+  background:url(../images/backgrounds/bg-music-sound.jpg) no-repeat;
+  background-size:cover;
+}
+
+.song.cabin-fever {
+  background:url(../images/backgrounds/bg-cabin-fever.jpg) no-repeat;
+  background-size:cover;
+}
+
+.song.metamorphosis {
+  background:url(../images/backgrounds/bg-metamorphosis.jpg) no-repeat;
   background-size:cover;
 }
 
@@ -342,20 +446,21 @@ $song-title-font:"Sue Ellen Francisco",serif;
 //
 // =================================
 
+$audio-player-line-height:6em;
+
 .audio-player-container {
   position:fixed;
-  top:0; right:2em; left:2em;
-  padding-top:2em;
-  height:8em;
+  bottom:0; right:0; left:0;
+  height:6em;
   color:white;
-  background:$color-bg;
+  background:#333;
   font-family:"Courier New";
   z-index:1000;
 
   nav {
     float:right;
     margin-right:2em;
-    line-height:4em;
+    line-height:$audio-player-line-height;
 
     a {
       display:inline-block;
@@ -378,20 +483,59 @@ $song-title-font:"Sue Ellen Francisco",serif;
   // Player buttons
   .jp-controls li {
     float:left;
+    height:$audio-player-line-height;
+    line-height:4em;
+    margin-top:1em;
   }
   .jp-play,
   .jp-pause,
   .jp-previous,
   .jp-next {
+    position:relative;
     display:inline-block;
-    width:4em;
-    height:4em;
+    width:3em;
+    height:3em;
     margin-left:2em;
     border:4px solid white;
     border-radius:100em;
     text-align:center;
-    line-height:4em;
+    line-height:2.5em;
     cursor:pointer;
+
+    @include icon;
+  }
+
+  .jp-play {
+    @include icon('before', false, play) {
+      position:absolute;
+      top:50%; left:50%;
+      width:1em; height:1em;
+      margin-top:-0.5em;
+      margin-left:-0.475em;
+      font-size:1.25rem;
+    }
+  }
+
+  .jp-previous {
+    @include icon('before', false, backward) {
+      position:absolute;
+      top:50%; left:50%;
+      width:1em; height:1em;
+      margin-top:-0.5em;
+      margin-left:-0.5em;
+      font-size:1.25rem;
+    }
+  }
+
+  .jp-next {
+    @include icon('before', false, forward) {
+      position:absolute;
+      top:50%; left:50%;
+      width:1em; height:1em;
+      margin-top:-0.5em;
+      margin-left:-0.5em;
+      font-size:1.25rem;
+    }
   }
 
   // Hide songs that aren't playing
@@ -402,8 +546,8 @@ $song-title-font:"Sue Ellen Francisco",serif;
     &.jp-playlist-current {
       display:block;
       margin-left:2em;
-      height:4em;
-      line-height:4em;
+      height:$audio-player-line-height;
+      line-height:$audio-player-line-height;
 
       a {
         font-size:1.5em;
@@ -415,7 +559,7 @@ $song-title-font:"Sue Ellen Francisco",serif;
 .duration {
   float:left;
   margin-left:1em;
-  line-height:4em;
+  line-height:$audio-player-line-height;
 
   span {
   }
@@ -430,7 +574,7 @@ $song-title-font:"Sue Ellen Francisco",serif;
 .panel {
   display:none;
   position:fixed;
-  top:8em; right:0; bottom:0; left:0;
+  top:0; right:0; bottom:6em; left:0;
   padding:4em;
   background:red;
   overflow:scroll;
@@ -450,12 +594,27 @@ $song-title-font:"Sue Ellen Francisco",serif;
 .lyrics.panel {
   background:darkblue;
   p {
-    font-size:3vw;
+    font-size:2em;
     font-family:"Neuton",serif;
   }
 }
 
-.lyrics-text {
-  // -webkit-columns:2;
-  // -webkit-column-gap:2em;
+.lyrics.panel.insanity-jam {
+  background:url(../images/backgrounds/bg-insanity-jam2.jpg) no-repeat;
+  background-size:cover;
 }
+
+.lyrics.panel.long-way-around {
+  background:url(../images/backgrounds/bg-long-way-around2.jpg) no-repeat;
+  background-size:cover;
+}
+
+.lyrics.panel.rope-a-dope {
+  background:url(../images/backgrounds/bg-rope-a-dope2.jpg) no-repeat;
+  background-size:cover;
+}
+
+// .lyrics-text-container {
+//   -webkit-columns:2;
+//   -webkit-column-gap:2em;
+// }

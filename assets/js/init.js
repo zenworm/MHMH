@@ -1,21 +1,27 @@
 $(document).ready(function() {
 
+  // About MHMH
   $(".about-mhmh").click(function() {
     $("#about-mhmh").fadeIn(200);
   });
 
+  // Lyrics button on each song
   $(".song .lyrics").click(function() {
     var songName = $(this).parents(".song").find("header h1").text();
+    var dataSongName = $(this).parents(".song").data("song-name");
     var lyricsText = $(this).parents(".song").find(".lyrics-text").html();
+    $(".panel.lyrics").removeClass().addClass("panel lyrics " + dataSongName );
     $(".panel.lyrics .lyrics-text-container").html(lyricsText);
     $(".panel.lyrics header h1").text(songName);
     $(".panel.lyrics").fadeIn(200);
   });
 
+  // Close the panel
   $(".panel-close").click(function() {
     $(this).parents(".panel").fadeOut(200);
   });
 
+  // jPlayer stuff
   new jPlayerPlaylist({
     jPlayer: ".audio-player",
     cssSelectorAncestor: ".audio-player-container"
@@ -92,6 +98,5 @@ $(document).ready(function() {
     smoothPlayBar: true,
     keyEnabled: true
   });
-
 
 });
