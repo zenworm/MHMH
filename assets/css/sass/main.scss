@@ -99,9 +99,10 @@ $font-body:"Courier New", sans-serif;
   border:4px double rgba(black,0.375);
   background:red;
   color:white;
+  box-shadow:0 2px 0 1px darken(red, 30%);
 
   &:hover {
-    background:shade($color-primary,5%);
+    background:shade(red,25%);
   }
 }
 
@@ -314,7 +315,6 @@ $song-title-font:"Sue Ellen Francisco",serif;
 
 .song {
   position:relative;
-  // border:4px solid #333;
   overflow:hidden;
 
   img {
@@ -329,12 +329,18 @@ $song-title-font:"Sue Ellen Francisco",serif;
     margin:0;
     font-family:$song-title-font;
     text-transform:uppercase;
+    @include transform( translateY(5.4em) );
+    @include transition( .2s ease-in-out all );
 
     h1 {
       margin:0;
       font-size:2em;
     }
   }
+}
+
+.song:hover header {
+  @include transform( translateY(0) );
 }
 
 // Hide song lyrics
@@ -353,30 +359,42 @@ $song-title-font:"Sue Ellen Francisco",serif;
     text-align:center;
     line-height:4em;
     cursor:pointer;
+    opacity:0;
+    @include transform( scale(0.5) translateY(5em) skewX(-20deg) skewY(50deg) );
+    @include transition( .2s ease-in-out all );
+    @include icon {
+      position:absolute;
+      top:50%; left:50%;
+      width:1em; height:1em;
+      margin-top:-0.5em;
+      margin-left:-0.5em;
+      font-size:1.5rem;
+    }
+  }
+
+  .play:hover,
+  .lyrics:hover {
+    background:white;
+    @include icon {
+      color:#666;
+    }
   }
 
   .play {
     left:7em;
-    @include icon('before', true, play) {
-      position:absolute;
-      top:50%; left:50%;
-      width:1em; height:1em;
-      margin-top:-0.5em;
-      margin-left:-0.5em;
-      font-size:1.5rem;
-    }
+    @include transition-delay( .08s );
+    @include icon('before', false, play);
   }
 
   .lyrics {
-    @include icon('before', true, lyrics2) {
-      position:absolute;
-      top:50%; left:50%;
-      width:1em; height:1em;
-      margin-top:-0.5em;
-      margin-left:-0.5em;
-      font-size:1.5rem;
-    }
+    @include icon('before', false, lyrics2);
   }
+}
+
+.a-beautiful-container:hover .play,
+.a-beautiful-container:hover .lyrics {
+  @include transform( scale(1) translateY(0) skewX(0deg) skewY(0deg) );
+  opacity:1;
 }
 
 .song.insanity-jam {
@@ -501,40 +519,31 @@ $audio-player-line-height:6em;
     text-align:center;
     line-height:2.5em;
     cursor:pointer;
-
-    @include icon;
-  }
-
-  .jp-play {
-    @include icon('before', false, play) {
+    @include icon {
       position:absolute;
       top:50%; left:50%;
       width:1em; height:1em;
       margin-top:-0.5em;
       margin-left:-0.475em;
       font-size:1.25rem;
+    };
+  }
+
+  .jp-play {
+    @include icon('before', false, play) {
+
     }
   }
 
   .jp-previous {
     @include icon('before', false, backward) {
-      position:absolute;
-      top:50%; left:50%;
-      width:1em; height:1em;
-      margin-top:-0.5em;
-      margin-left:-0.5em;
-      font-size:1.25rem;
+
     }
   }
 
   .jp-next {
     @include icon('before', false, forward) {
-      position:absolute;
-      top:50%; left:50%;
-      width:1em; height:1em;
-      margin-top:-0.5em;
-      margin-left:-0.5em;
-      font-size:1.25rem;
+
     }
   }
 
@@ -613,8 +622,3 @@ $audio-player-line-height:6em;
   background:url(../images/backgrounds/bg-rope-a-dope2.jpg) no-repeat;
   background-size:cover;
 }
-
-// .lyrics-text-container {
-//   -webkit-columns:2;
-//   -webkit-column-gap:2em;
-// }

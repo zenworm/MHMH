@@ -388,9 +388,10 @@ a {
   margin: 0 auto;
   border: 4px double rgba(0, 0, 0, 0.375);
   background: red;
-  color: white; }
+  color: white;
+  box-shadow: 0 2px 0 1px #660000; }
   .button-primary:hover {
-    background: black; }
+    background: #bf0000; }
 
 @-moz-keyframes highlight-quick {
   from {
@@ -602,10 +603,25 @@ body.is-busy, body.is-busy * {
     bottom: 7em;
     margin: 0;
     font-family: "Sue Ellen Francisco", serif;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    -webkit-transform: translateY(5.4em);
+    -moz-transform: translateY(5.4em);
+    -ms-transform: translateY(5.4em);
+    -o-transform: translateY(5.4em);
+    transform: translateY(5.4em);
+    -webkit-transition: 0.2s ease-in-out all;
+    -moz-transition: 0.2s ease-in-out all;
+    transition: 0.2s ease-in-out all; }
     .song header h1 {
       margin: 0;
       font-size: 2em; }
+
+.song:hover header {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0); }
 
 .lyrics-text {
   display: none; }
@@ -621,11 +637,18 @@ body.is-busy, body.is-busy * {
   border-radius: 100em;
   text-align: center;
   line-height: 4em;
-  cursor: pointer; }
-.song .play {
-  left: 7em; }
-  .song .play:before {
-    content: "\e003";
+  cursor: pointer;
+  opacity: 0;
+  -webkit-transform: scale(0.5) translateY(5em) skewX(-20deg) skewY(50deg);
+  -moz-transform: scale(0.5) translateY(5em) skewX(-20deg) skewY(50deg);
+  -ms-transform: scale(0.5) translateY(5em) skewX(-20deg) skewY(50deg);
+  -o-transform: scale(0.5) translateY(5em) skewX(-20deg) skewY(50deg);
+  transform: scale(0.5) translateY(5em) skewX(-20deg) skewY(50deg);
+  -webkit-transition: 0.2s ease-in-out all;
+  -moz-transition: 0.2s ease-in-out all;
+  transition: 0.2s ease-in-out all; }
+  .song .play:before,
+  .song .lyrics:before {
     speak: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -643,25 +666,39 @@ body.is-busy, body.is-busy * {
     margin-top: -0.5em;
     margin-left: -0.5em;
     font-size: 1.5rem; }
+.song .play:hover,
+.song .lyrics:hover {
+  background: white; }
+  .song .play:hover:before,
+  .song .lyrics:hover:before {
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: none;
+    line-height: 1;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-family: 'mhmh-icons';
+    color: #666; }
+.song .play {
+  left: 7em;
+  -webkit-transition-delay: 0.08s;
+  -moz-transition-delay: 0.08s;
+  transition-delay: 0.08s; }
+  .song .play:before {
+    content: "\e003"; }
 .song .lyrics:before {
-  content: "\e005";
-  speak: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-transform: none;
-  line-height: 1;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  font-family: 'mhmh-icons';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 1em;
-  height: 1em;
-  margin-top: -0.5em;
-  margin-left: -0.5em;
-  font-size: 1.5rem; }
+  content: "\e005"; }
+
+.a-beautiful-container:hover .play,
+.a-beautiful-container:hover .lyrics {
+  -webkit-transform: scale(1) translateY(0) skewX(0deg) skewY(0deg);
+  -moz-transform: scale(1) translateY(0) skewX(0deg) skewY(0deg);
+  -ms-transform: scale(1) translateY(0) skewX(0deg) skewY(0deg);
+  -o-transform: scale(1) translateY(0) skewX(0deg) skewY(0deg);
+  transform: scale(1) translateY(0) skewX(0deg) skewY(0deg);
+  opacity: 1; }
 
 .song.insanity-jam {
   background: url(../images/backgrounds/bg-insanity-jam2.jpg) 18% 15% no-repeat;
@@ -767,37 +804,21 @@ body.is-busy, body.is-busy * {
       font-style: normal;
       font-variant: normal;
       font-weight: normal;
-      font-family: 'mhmh-icons'; }
+      font-family: 'mhmh-icons';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 1em;
+      height: 1em;
+      margin-top: -0.5em;
+      margin-left: -0.475em;
+      font-size: 1.25rem; }
   .audio-player-container .jp-play:before {
-    content: "\e003";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1em;
-    height: 1em;
-    margin-top: -0.5em;
-    margin-left: -0.475em;
-    font-size: 1.25rem; }
+    content: "\e003"; }
   .audio-player-container .jp-previous:before {
-    content: "\e001";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1em;
-    height: 1em;
-    margin-top: -0.5em;
-    margin-left: -0.5em;
-    font-size: 1.25rem; }
+    content: "\e001"; }
   .audio-player-container .jp-next:before {
-    content: "\e000";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1em;
-    height: 1em;
-    margin-top: -0.5em;
-    margin-left: -0.5em;
-    font-size: 1.25rem; }
+    content: "\e000"; }
   .audio-player-container .jp-playlist li {
     display: none;
     float: left; }
