@@ -448,7 +448,7 @@ body {
   margin: 0;
   padding: 2em;
   color: white;
-  background: #0b0b0b;
+  background: #222222;
   line-height: 1.5;
   font-family: "Courier New", sans-serif;
   *zoom: 1;
@@ -503,8 +503,9 @@ body.is-busy, body.is-busy * {
   font-weight: normal; }
 
 .a-beautiful-container {
+  position: relative;
   padding: 2em;
-  min-height: 26em;
+  padding-top: 23.37%;
   display: block;
   float: left;
   margin-right: 2.1645%;
@@ -514,6 +515,8 @@ body.is-busy, body.is-busy * {
     margin-right: 0; }
   .a-beautiful-container:nth-child(4n) {
     margin-right: 0; }
+  .a-beautiful-container:hover:after {
+    position: absolute; }
 
 .page-wrapper {
   position: fixed;
@@ -548,21 +551,26 @@ body.is-busy, body.is-busy * {
   background: #333;
   color: red;
   overflow: hidden;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: flex;
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  align-items: center;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  flex-direction: column; }
+  height: 0; }
+  .download-the-album .inner {
+    position: absolute;
+    top: 50%;
+    right: 2em;
+    left: 2em;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
   .download-the-album p {
-    margin: auto;
     color: white;
-    text-align: center; }
+    text-align: center;
+    font-family: "Sue Ellen Francisco",sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5em; }
   .download-the-album .button-primary {
     margin: auto;
+    width: 100%;
     display: block;
     font-size: 1.5em;
     text-align: center; }
@@ -680,7 +688,7 @@ body.is-busy, body.is-busy * {
     font-variant: normal;
     font-weight: normal;
     font-family: 'mhmh-icons';
-    color: #666; }
+    color: black; }
 .song .play {
   left: 7em;
   -webkit-transition-delay: 0.08s;
@@ -721,8 +729,8 @@ body.is-busy, body.is-busy * {
   background-size: cover; }
 
 .song.long-way-around {
-  background: url(../images/backgrounds/bg-long-way-around2.jpg) center center no-repeat;
-  background-size: 160%; }
+  background: url(../images/backgrounds/bg-long-way-around2.jpg) center right no-repeat;
+  background-size: cover; }
 
 .song.yellow-bushy-county {
   background: url(../images/backgrounds/bg-yellow-bushy-county.jpg) no-repeat;
@@ -754,10 +762,11 @@ body.is-busy, body.is-busy * {
   right: 0;
   left: 0;
   height: 6em;
+  background: #333333 url(../images/backgrounds/bg-texture1.png);
   color: white;
-  background: #333;
   font-family: "Courier New";
-  z-index: 1000; }
+  z-index: 1000;
+  box-shadow: 0 0 0.25em black; }
   .audio-player-container nav {
     float: right;
     margin-right: 2em;
@@ -830,10 +839,23 @@ body.is-busy, body.is-busy * {
       .audio-player-container .jp-playlist li.jp-playlist-current a {
         font-size: 1.5em; }
 
+.audio-player-container .jp-playlist li.jp-playlist-current a {
+  border: none;
+  font-family: "Sue Ellen Francisco",sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2em; }
+
 .duration {
   float: left;
   margin-left: 1em;
   line-height: 6em; }
+  .duration span {
+    font-family: "Sue Ellen Francisco",sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2em;
+    color: rgba(0, 0, 0, 0.675); }
 
 .panel {
   display: none;

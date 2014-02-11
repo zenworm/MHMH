@@ -15,7 +15,7 @@ $color-primary:black;
 $color-secondary:gray;
 $color-text:white;
 $color-link:shade($color-primary, 35%);
-$color-bg:#0b0b0b;
+$color-bg:#222;
 $color-highlight:tint(#ffe400, 90%);
 
 
@@ -216,10 +216,16 @@ body.is-busy, body.is-busy * {
 //
 // =================================
 .a-beautiful-container {
+  position:relative;
   padding:2em;
-  min-height:26em;
+  // min-height:26em;
+  padding-top:23.37%;
   @include span-columns(3);
   @include omega(4n);
+
+  &:hover:after {
+    position:absolute;
+  }
 }
 
 .page-wrapper {
@@ -263,18 +269,25 @@ body.is-busy, body.is-busy * {
   background:#333;
   color:red;
   overflow:hidden;
-  @include display(flex);
-  @include align-items(center);
-  @include flex-direction(column);
+  height:0;
+
+  .inner {
+    position:absolute;
+    top:50%; right:2em; left:2em;
+    @include transform(translateY(-50%));
+  }
 
   p {
-    margin:auto;
     color:white;
     text-align:center;
+    font-family:"Sue Ellen Francisco",sans-serif;
+    text-transform:uppercase;
+    font-size:1.5em;
   }
 
   .button-primary {
     margin:auto;
+    width:100%;
     display:block;
     font-size:1.5em;
     text-align:center;
@@ -376,7 +389,7 @@ $song-title-font:"Sue Ellen Francisco",serif;
   .lyrics:hover {
     background:white;
     @include icon {
-      color:#666;
+      color:black;
     }
   }
 
@@ -423,8 +436,8 @@ $song-title-font:"Sue Ellen Francisco",serif;
 }
 
 .song.long-way-around {
-  background:url(../images/backgrounds/bg-long-way-around2.jpg) center center no-repeat;
-  background-size:160%;
+  background:url(../images/backgrounds/bg-long-way-around2.jpg) center right no-repeat;
+  background-size:cover;
 }
 
 .song.yellow-bushy-county {
@@ -470,10 +483,11 @@ $audio-player-line-height:6em;
   position:fixed;
   bottom:0; right:0; left:0;
   height:6em;
+  background:#333 url(../images/backgrounds/bg-texture1.png);
   color:white;
-  background:#333;
   font-family:"Courier New";
   z-index:1000;
+  box-shadow:0 0 0.25em black;
 
   nav {
     float:right;
@@ -565,12 +579,25 @@ $audio-player-line-height:6em;
   }
 }
 
+.audio-player-container .jp-playlist li.jp-playlist-current a {
+  border:none;
+  font-family:"Sue Ellen Francisco",sans-serif;
+  text-transform:uppercase;
+  font-weight:bold;
+  font-size:2em;
+}
+
 .duration {
   float:left;
   margin-left:1em;
   line-height:$audio-player-line-height;
 
   span {
+    font-family:"Sue Ellen Francisco",sans-serif;
+    text-transform:uppercase;
+    font-weight:bold;
+    font-size:2em;
+    color:rgba(black,0.675);
   }
 }
 
